@@ -1,19 +1,13 @@
 <template>
   <div class="cases">
-    <div class="container">
-      <div class="row">
-        <div v-for="item in cases" :key="item.id" class="col-md-4">
-          <a :href="`${item.slug}`" class="case">
-            <div class="caption">
-              <span> {{ item.title }}</span>
-            </div>
-            <div class="background">
-              <img src="http://placekitten.com/300/300">
-            </div>
-          </a>
-        </div>
+    <a v-for="item in cases" :key="item.id" :href="`${item.slug}`" class="case">
+      <div class="caption">
+        <span> {{ item.title }}</span>
       </div>
-    </div>
+      <div class="background">
+        <img src="http://placekitten.com/300/300">
+      </div>
+    </a>
   </div>
 </template>
 
@@ -32,7 +26,10 @@ export default {
 
 <style lang="scss">
 .cases {
-  padding: 60px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 30px;
   .case {
     position: relative;
     display: block;
